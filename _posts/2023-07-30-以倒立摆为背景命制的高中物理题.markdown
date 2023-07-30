@@ -82,6 +82,7 @@ math: true
    $$
    K_p > mgl
    $$
+   
    $$
    K_d^2 > 4ml^2(K_p - mgl)
    $$

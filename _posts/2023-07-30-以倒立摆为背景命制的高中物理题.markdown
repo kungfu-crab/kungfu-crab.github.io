@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 以倒立摆为背景命制的高中物理题
-date: 2023-07-30 20:19:00+0800
+date: 2023-07-30
 categories: 学习偶得
 math: true
 ---

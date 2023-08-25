@@ -243,3 +243,9 @@ Minkowski不等式：对$p > 0$和两列复数列$$\{x_i\}_{i = 1}^n,\{y_i\}_{i 
 $$
 (\sum_{i = 1}^n |x_i + y_i|^p)^{\frac{1}{p}} \leq (\sum_{i = 1}^n |x_i|^p)^{\frac{1}{p}} + (\sum_{i = 1}^n |y_i|^p)^{\frac{1}{p}}
 $$
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<span id="busuanzi_container_page_pv">
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</span>

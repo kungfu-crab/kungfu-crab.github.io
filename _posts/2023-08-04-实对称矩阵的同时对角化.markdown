@@ -41,3 +41,9 @@ math: true
 证明：$A$为正定对称矩阵，存在可逆矩阵$P$，使得$P^TAP = I_n$，对$P^TBP$做正交合同对角化。注意到$Q^TP^TAPQ = I_n$，这就实现了同时合同对角化。
 
 事实上，定理5可以看成定理4的特例。注意到$AA^{-1}B = BA^{-1}A$，且$A^{-1}$为正定对称矩阵，由定理4可知$A,B$可同时相合对角化。
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<span id="busuanzi_container_page_pv">
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</span>

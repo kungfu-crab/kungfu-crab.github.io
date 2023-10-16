@@ -75,5 +75,5 @@ mvn -v
 
 如果在第一步中 java 的环境变量配置不正确，maven链接的runtime路径（上图红框选中的部分）为`Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home`。输入`mvn clean install`后会出现如下错误。需要重新配置java的环境变量。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20201226222007233.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3c2MDUyODMwNzM=,size_16,color_FFFFFF,t_70#pic_center)
+![在这里插入图片描述](https://s2.loli.net/2023/10/16/O7sKZB1imPxrFJj.png)
 

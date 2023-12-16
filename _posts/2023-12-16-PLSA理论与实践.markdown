@@ -1,0 +1,218 @@
+---
+layout: post
+title: PLSA理论与实践
+date: 2023-12-16
+categories: 学习偶得
+math: true
+---
+
+# PLSA理论与实践
+
+PLSA又称为概率潜在语义分析，是一种利用概率生成模型对文本集合进行话题分析的无监督学习方法。该模型最大的特点是加入了主题这一隐变量，文本生成主题，主题生成单词，从而得到单词-文本共现矩阵。本文将对包含物理学、计算机科学、统计学、数学四个领域的15000条文献摘要的数据集（保存在`Task-Corpus.csv`中）使用PLSA算法进行处理。
+
+# 一、算法推导
+
+## 1.1 E-steps
+
+设单词集合为$w_i(i = 1,\cdots,M)$，其中$M$为单词数；文本集合为$d_j(j = 1,\cdots, N)$，其中$N$为文本数；主题集合为$z_k(k = 1,\cdots,K)$，其中$K$为主题数。对给定的文本，主题的分布是一个有$K$个选项的多项分布，因此参数个数为$N\times K$，设参数矩阵为$\Lambda$。对给定的主题，单词的分布是一个有$M$个选项的多项分布，因此参数个数为$K\times M$，设参数矩阵为$\Theta$。一般来说$K \ll M$，这就避免了模型的过拟合。
+
+如果主题未知，根据全概率公式有
+
+$$
+p(w_i, d_j) = p(d_j)\sum_{k = 1}^K p(w_i | z_k)p(z_k | d_j)
+$$
+
+因此非完全数据（主题未知）的似然函数为
+
+$$
+L(\Theta, \Lambda | X) = p(X | \Theta) = \prod_{i = 1}^M\prod_{j = 1}^N (p(d_j)\sum_{k = 1}^K p(w_i | z_k)p(z_k | d_j))^{n(w_i, d_j)}
+$$
+
+对数似然为
+
+$$
+\log L(\Theta, \Lambda | X) = \sum_{i = 1}^M \sum_{j = 1}^N n(w_i, d_j)\log(p(d_j)\sum_{k = 1}^K p(w_i | z_k)p(z_k | d_j))
+$$
+
+对数似然中包含求和的对数，因此难以处理。
+
+如果主题已知，文章$d_j$出现单词$w_i$的概率为
+
+$$
+p(w_i, d_j) = p(d_j)p(w_i | z_k)p(z_k | d_j)
+$$
+
+因此完全数据的似然函数为
+
+$$
+L(\Theta | X) = \prod_{i = 1}^M \prod_{j = 1}^N (p(d_j)p(w_i | z_k)p(z_k | d_j))^{n(w_i, d_j)}
+$$
+
+对数似然为
+
+$$
+\log L(\Theta | X)  =\sum_{j = 1}^N n(w_i, d_j) \log(p(d_j)p(w_i | z_k)p(z_k | d_j))
+$$
+
+Q函数为对数似然在后验分布下的期望
+
+$$
+\begin{aligned}
+Q &= \sum_{k = 1}^K p(z_k | w_i, d_j) \sum_{i = 1}^M \sum_{j = 1}^N n(w_i, d_j) \log(p(d_j)p(w_i | z_k)p(z_k | d_j)) \\
+&= \sum_{i = 1}^M \sum_{j = 1}^N n(w_i, d_j)\sum_{k = 1}^K p(z_k | w_i, d_j)\log(p(d_j)p(w_i | z_k)p(z_k | d_j))
+\end{aligned}
+$$
+
+其中后验概率
+
+$$
+p(z_k | w_i, d_j) = \frac{p(w_i | z_k) p(z_k | d_j)}{\sum_{k = 1}^K p(w_i | z_k) p(z_k | d_j)}
+$$
+
+## 1.2 M-step
+
+满足约束条件
+
+$$
+\sum_{i = 1}^M p(w_i | z_k) = 1, k = 1,\cdots,K
+$$
+
+$$
+\sum_{k = 1}^K p(z_k | d_j) = 1,j = 1,\cdots,N
+$$
+
+引入拉格朗日函数
+
+$$
+J = Q + \sum_{k = 1}^K r_k(1 - \sum_{i = 1}^M p(w_i | z_k)) + \sum_{j = 1}^N\rho_j(1 - \sum_{k = 1}^K p(z_k | d_j))
+$$
+
+$$
+\frac{\partial J}{\partial p^*(w_i | z_k)} = \sum_{j = 1}^N \frac{n(w_i, d_j) p(z_k | w_i, d_j)}{p(w_i | z_k)} - r_k = 0
+$$
+
+因此
+
+$$
+r_k p^*(w_i | z_k) = \sum_{j = 1}^N n(w_i, d_j) p(z_k | w_i, d_j)
+$$
+
+对$i$求和，就有
+
+$$
+r_k = \sum_{i = 1}^M \sum_{j = 1}^N n(w_i, d_j) p(z_k | w_i, d_j)
+$$
+
+$$
+p^*(w_i | z_k) = \frac{\sum_{j = 1}^N n(w_i, d_j) p(z_k | w_i, d_j)}{\sum_{i = 1}^M \sum_{j = 1}^N n(w_i, d_j) p(z_k | w_i, d_j)}
+$$
+
+同理
+
+$$
+p^*(z_k | d_j) = \frac{\sum_{j = 1}^N n(w_i, d_j) p(z_k | w_i, d_j)}{\sum_{i = 1}^M n(w_i, d_j)}
+$$
+
+$(6)(13)(14)$三式共同构成PLSA算法的迭代公式。
+
+
+
+# 二、算法实现
+
+用python实现PLSA算法。首先对数据集先做预处理。对给定的文本进行分词，利用wordnet语料库将同义词进行替换（例如单复数不同的词需要替换成同一个词），并将停用词排除（停用词表在网上下载，参见作业中的`stopwords.dic`文件）。然后对全体文本构成的单词集合进行词频统计，构建词频矩阵$n(w_i, d_j)$。这一部分用到了python的`nltk`包。核心代码如下。
+
+```python
+    words = set()
+    word_counts = []
+    for document in documents:
+        seglist = word_tokenize(document)
+        wordlist = []
+        for word in seglist:
+            synsets = wordnet.synsets(word)
+            if synsets:
+                syn_word = synsets[0].lemmas()[0].name()
+                if syn_word not in stopwords:
+                    wordlist.append(syn_word)
+            else:
+                if word not in stopwords:
+                    wordlist.append(word)
+        words = words.union(wordlist)
+        word_counts.append(Counter(wordlist))
+    word2id = {words:id for id, words in enumerate(words)}
+    id2word = dict(enumerate(words))
+
+    N = len(documents) # number of documents
+    M = len(words) # number of words
+    X = np.zeros((N, M))
+    for i in range(N):
+        for keys in word_counts[i]:
+            X[i, word2id[keys]] = word_counts[i][keys]
+```
+
+然后根据$(6)(13)(14)$三式进行PLSA算法的编写。注意到这三个式子都可以写成矩阵的形式，提高运算效率。同时注意到这三个式子都和分子成正比，因此可以计算出份子再除以归一化常数即可。E-step的代码如下。
+
+```python
+def E_step(lam, theta):
+    # lam: N * K, theta: K * M, p = K * N * M
+    N = lam.shape[0]
+    M = theta.shape[1]
+    lam_reshaped = np.tile(lam, (M, 1, 1)).transpose((2,1,0)) # K * N * M
+    theta_reshaped = np.tile(theta, (N, 1, 1)).transpose((1,0,2)) # K * N * M
+    temp = lam @ theta
+    p = lam_reshaped * theta_reshaped / temp
+    return p
+```
+
+M-step的代码如下。
+
+```python
+def M_step(p, X):
+    # p: K * N * M, X: N * M, lam: N * K, theta: K * M
+    # update lam
+    lam = np.sum(p * X, axis=2) # K * N
+    lam = lam / np.sum(lam, axis=0) # normalization for each column
+    lam = lam.transpose((1,0)) # N * K
+
+    # update theta
+    theta = np.sum(p * X, axis=1) # K * M
+    theta = theta / np.sum(theta, axis=1)[:, np.newaxis] # normalization for each row
+    
+    return lam, theta
+```
+
+计算对数似然的代码如下。
+
+```python
+def LogLikelihood(p, X, lam, theta):
+    # p: K * N * M, X: N * M, lam: N * K, theta: K * M
+    res = np.sum(X * np.log(lam @ theta)) # N * M
+    return res
+```
+
+用随机数初始化$\Theta,\Lambda$以避免落入局部最优。设定最大迭代次数为200。对数似然的阈值为10。当相邻两次对数似然的差小于阈值或者达到最大迭代次数时停止迭代。如果计算对数似然时报错，说明某个参数被舍入到0，此时也需要停止迭代。
+
+
+
+# 三、结果分析
+
+由于笔记本电脑的内存有限，从所给数据集中随机抽取1000篇文本进行实验。设定主题数为4。某次实验的结果如下。构建的字典中包含11342个单词。字典保存在`dictionary.json`文件中。
+
+程序在迭代152次后停止。可以看到对数似然确实在不断上升。
+
+<img src="https://s2.loli.net/2023/11/28/vAoEnZw3NHb7VPu.png" alt="image-20231128204616503" style="zoom:50%;" />
+
+每个文本的主题分布保存在`DocTopicDistribution.csv`文件中。每个主题的单词分布保存在`TopicWordDistribution.csv`文件中。每个主题中出现概率最高的9个单词保存在`topics.txt`文件中，如下图所示。可以看到出现概率最高的单词分别为`astatine, network, Associate_in_Nursing, algorithm`，分别对应了物理学、计算机科学、统计学、数学四个领域。这证明了PLSA方法的有效性。
+
+![image-20231128204528069](https://s2.loli.net/2023/11/28/LRSIA2jzPC96hQB.png)
+
+
+
+# 项目开源
+
+本项目开源在[kungfu-crab/PLSA: A python implementation for PLSA(Probabilistic Latent Semantic Analysis) using EM algorithm. (github.com)](https://github.com/kungfu-crab/PLSA)，仅作为学习交流使用，禁止转载与抄袭。
+
+
+
+# 参考文献
+
+[1] Hofmann, T. (1999). Probabilistic Latent Semantic Analysis. In Proceedings of the Fifteenth Conference on Uncertainty in Artificial Intelligence (pp. 289-296). Morgan Kaufmann Publishers Inc. 

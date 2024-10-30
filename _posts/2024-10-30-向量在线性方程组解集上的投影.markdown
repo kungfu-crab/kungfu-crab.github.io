@@ -1,0 +1,86 @@
+---
+layout: post
+title: 向量在线性代数解集上的投影
+date: 2024-10-30
+categories: 学习偶得
+math: true
+---
+
+设 $A\in \mathbb{R}^{m\times n}, b\in \mathbb{R}^m, x\in \mathbb{R}^n$ ，考虑线性方程组 $Ax = b$。将 $A$ 写成行分块的形式
+
+$$
+A =
+\begin{bmatrix}
+a_1^T \\ a_2^T \\ \vdots \\ a_m^T
+\end{bmatrix}
+$$
+
+则有 $a_i^T x = b_i$，其中 $1\leq i\leq m$。假设 $A$ 行满秩，该方程组定义了 $m$ 个超平面的交集。向量 $v$ 在这个解集上的投影为
+
+$$
+\text{argmin}_{x} \frac{1}{2} \|x - v\|^2_2
+$$
+
+$$
+\text{s.t.}\quad Ax = b
+$$
+
+令 $u = x - v$，问题变为
+
+$$
+\text{argmin}_{u} \frac{1}{2} \|u\|^2_2
+$$
+
+$$
+\text{s.t.}\quad Au = b - Av
+$$
+
+当 $u$ 和 $A$ 的零空间正交时，对 $A$ 的零空间的任意向量 $w$ ，有
+
+$$
+\|u+w\|^2_2 = \|\|u\|^2_2 + \|w\|^2_2
+$$
+
+$$
+A(u + w) = b - Av
+$$
+
+因此 $\|u\|_2$ 最小。此时 $u$ 落在 $A$ 的行空间内。设 $u = A^T w$，代入知
+
+$$
+w = (AA^T)^{-1} (b - Av)
+$$
+
+$$
+w = A^T(AA^T)^{-1} (b - Av)
+$$
+
+因此
+
+$$
+\text{Proj}_{Ax = b} (v) = v + A^T(AA^T)^{-1} (b - Av)
+$$
+
+特别地，当 $b = 0$，即向量 $v$ 在 $A$ 的零解空间上的投影为
+
+$$
+\text{Proj}_{Ax = 0} (v) = v - A^T(AA^T)^{-1} Av
+$$
+
+注意这个解与最小二乘的不同。最小二乘解决的问题是
+
+$$
+\test{argmin}_{x} \frac{1}{2} \|x - v\|^2_2
+$$
+
+$$
+\text{s.t.}\quad x = Au
+$$
+
+也就是向量 $v$ 向 $A$ 的列空间的投影。最小二乘解为
+
+$$
+x = (A^TA)^{-1} A^Tb
+$$
+
+一个和 $A$ 的左逆相关，一个和 $A$ 的右逆相关。更一般地说，最小范数解是 $A$ 行满秩时的最优解，最小二乘解是 $A$ 列满秩时的最优解。

@@ -1,0 +1,476 @@
+---
+layout: post
+title: 2025考研数学（一）解答
+date: 2024-12-23
+categories: 学习偶得
+math: true
+---
+
+## 一、选择题
+
+### 1.已知函数$f(x) = \int_0^x e^{t^2}\sin t\,dt$，$g(x) = \int_0^x e^{t^2}dt\cdot \sin^2 x$，则 ( )
+   
+   A. $x=0$是$f(x)$的极值点，也是$g(x)$的极值点
+   
+   B. $x=0$是$f(x)$的极值点，$(0, 0)$是曲线$y=g(x)$的拐点
+   
+   C. $x=0$是$f(x)$的极值点，$(0, 0)$是曲线$y=f(x)$的拐点
+   
+   D. $(0, 0)$是曲线$y=f(x)$的拐点，也是曲线$y=g(x)$的拐点
+
+解：$f(x)$是偶函数，$g(x)$是奇函数，此题只能选B。
+
+
+
+### 2.已知级数：（i）$\sum_{n=1}^{\infty}\sin\frac{n^3\pi}{n^2 + 1}$（ii）$\sum_{n=1}^{\infty}(-1)^n(\frac{1}{\sqrt[3]{n^2}} - \tan\frac{1}{\sqrt[3]{n^2}})$，则 ( )
+   
+   A. （i）与（ii）均条件收敛
+   
+   B. （i）条件收敛，（ii）绝对收敛
+   
+   C. （i）绝对收敛，（ii）条件收敛
+   
+   D. （i）与（ii）均绝对收敛
+
+解：对于（i），
+$$
+|\sin\frac{n^3\pi}{n^2 + 1}| = |\sin(\frac{n^3\pi}{n^2 + 1} - n\pi)| = |\sin\frac{n\pi}{n^2 + 1}|\sim\frac{\pi}{n}
+$$
+所以$\sum_{n=1}^{\infty}|\sin\frac{n^3\pi}{n^2 + 1}|$发散。又
+$$
+\sin\frac{n^3\pi}{n^2+1} = (-1)^n\sin\frac{n\pi}{n^2 + 1}
+$$
+$n$充分大时$\sin\frac{n\pi}{n^2 + 1}$单调递减趋于0，由莱布尼茨判别法$\sum_{n=1}^{\infty}\sin\frac{n^3\pi}{n^2 + 1}$收敛。因此$\sum_{n=1}^{\infty}\sin\frac{n^3\pi}{n^2 + 1}$条件收敛。对于（ii），
+$$
+|(-1)^n(\frac{1}{\sqrt[3]{n^2}} - \tan\frac{1}{\sqrt[3]{n^2}})|\sim\frac{1}{3n^2}
+$$
+因此$\sum_{n=1}^{\infty}(-1)^n(\frac{1}{\sqrt[3]{n^2}} - \tan\frac{1}{\sqrt[3]{n^2}})$绝对收敛。选B。
+
+
+
+### 3.设函数$f(x)$在区间$[0, +\infty)$上可导，则 ( )
+   
+   A. 当$\lim_{x\to +\infty}f(x)$存在时，$\lim_{x\to +\infty}f'(x)$存在
+   
+   B. 当$\lim_{x\to +\infty}f'(x)$存在时, $\lim_{x\to +\infty}f(x)$存在
+   
+   C. 当$\lim_{x\to +\infty}\frac{\int_0^x f(t)dt}{x}$存在时，$\lim_{x\to +\infty}f(x)$存在
+   
+   D. 当$\lim_{x\to +\infty}f(x)$存在时，$\lim_{x\to +\infty}\frac{\int_0^x f(t)dt}{x}$存在
+
+解：对A，取$f(x) = \frac{\sin x^2}{x}, f'(x) = 2\cos x^2 - \frac{\sin x^2}{x^2}$（可以补充定义$f(0) = 0, f'(0) = 1$），$\lim_{x\to +\infty}f(x)$存在，但$\lim_{x\to +\infty}f'(x)$不存在。
+
+对B，取$f(x) = x$，$\lim_{x\to +\infty}f'(x)$存在，但$\lim_{x\to +\infty}f(x)$不存在。
+
+对C，取$f(x) = (\sin x^2)' = 2x\cos x^2$，$\lim_{x\to +\infty}\frac{\int_0^x f(t)dt}{x} = \lim_{x\to +\infty}\frac{\sin x^2}{x}$存在，但$\lim_{x\to +\infty}f(x)$不存在。
+
+对D，因为$x\to +\infty$，符合洛必达定理使用的条件，因此$\lim_{x\to +\infty}f(x) = \lim_{x\to +\infty}\frac{(\int_0^x f(t)dt)'}{x'}$存在可以导出$\lim_{x\to +\infty}\frac{\int_0^x f(t)dt}{x}$存在。
+
+选D。
+
+
+
+### 4.设函数$f(x, y)$连续，则$\int_{-2}^2 dx\int_{4-x^2}^4 f(x, y)dy =$ ( )
+
+   A. $\int_0^4\left[\int_{-2}^{-\sqrt{4-y}}f(x, y)\mathrm{d}x+\int_{\sqrt{4-y}}^2 f(x, y)\mathrm{d}x\right]\mathrm{d}y$
+   
+   B. $\int_0^4\left[\int_{-2}^{\sqrt{4-y}}f(x, y)\mathrm{d}x+\int_{\sqrt{4-y}}^2 f(x, y)\mathrm{d}x\right]\mathrm{d}y$
+   
+   C. $\int_0^4\left[\int_{-2}^{-\sqrt{4-y}}f(x, y)\mathrm{d}x+\int_2^{\sqrt{4-y}}f(x, y)\mathrm{d}x\right]\mathrm{d}y$
+   
+   D. $2\int_0^4\mathrm{~d}y\int_{\sqrt{4-y}}^2 f(x, y)\mathrm{d}x$
+
+解：画图可以看出表示的抛物线和矩形之间的部分，选A。
+
+
+
+### 5.二次型$f(x_1, x_2, x_3) = x_1^2 + 2x_1x_2 + 2x_1x_3$的正惯性指数为 ( )
+   
+   A. 1
+   
+   B. 2
+   
+   C. 3
+   
+   D. 4
+
+解：作合同变换
+
+$$
+\begin{equation*}
+\begin{bmatrix}
+1 & 1 & 1\\
+1 & 0 & 0\\
+1 & 0 & 0\\
+\end{bmatrix}\to
+\begin{bmatrix}
+1 & 0 & 1\\
+0 & -1 & -1\\
+1 & -1 & 0\\
+\end{bmatrix}\to
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & -1 & -1\\
+0 & -1 & -1\\
+\end{bmatrix}\to
+\begin{bmatrix}
+1 & 0 & 0\\
+0 & -1 & 0\\
+0 & 0 & 0\\
+\end{bmatrix}
+\end{equation*}
+$$
+
+选A。
+
+
+
+### 6.设$\alpha_1, \alpha_2, \alpha_3, \alpha_4$是$n$维向量，$\alpha_1, \alpha_2$线性无关，$\alpha_1, \alpha_2, \alpha_3$线性相关，且$\alpha_1 + \alpha_2 + \alpha_4 = 0$，在空间直角坐标系$O-xyz$中，关于$x, y, z$的方程组$x\alpha_1 + y\alpha_2 + z\alpha_3 = \alpha_4$的几何图形是( )
+   
+   A. 过原点的一个平面
+   
+   B. 过原点的一条直线
+   
+   C. 不过原点的一个平面
+   
+   D. 不过原点的一条直线
+
+解：$r(\alpha_1, \alpha_2, \alpha_3) = 2$，所以$x\alpha_1 + y\alpha_2 + z\alpha_3 = 0$的解集是过原点的一条直线，$x\alpha_1 + y\alpha_2 + z\alpha_3 = \alpha_4$表示不过原点的一条直线，选D。						
+
+
+
+### 7.设$n$阶矩阵$A, B, C$满足$r(A) + r(B) + r(C) = r(ABC) + 2n$，给出下列四个结论: (i) $r(ABC) + n = r(AB) + r(C)$； (ii) $r(AB) + n = r(A) + r(B)$； (iii) $r(A) = r(B) = r(C) = n$； (iv) $r(AB) = r(BC) = n$，其中正确的选项是 ( )
+   
+   A. (i)(ii)
+   
+   B. (i)(iii)
+   
+   C. (ii)(iv)
+   
+   D. (iii)(iv)
+
+解：由Sylvester不等式，$r(ABC)\geq r(AB) + r(C) - n$。又由Sylvester不等式，有$r(AB)\geq r(A) + r(B) - n$，于是$r(ABC) + 2n = r(A) + r(B) + r(C)\leq n + r(AB) + r(C)$，即$r(ABC)\leq r(AB) + r(C) - n$。因此不等式必须取等，即$r(ABC) = r(AB) + r(C) - n, r(AB) = r(A) + r(B) - n$。因此（i）（ii）正确，选A。
+
+
+
+### 8.设二维随机变量$(X, Y)$服从正态分布$N(0, 0; 1, 1; \rho)$，其中$\rho\in(-1, 1)$，若$a, b$为满足$a^2 + b^2 = 1$的任意实数，则$D(aX + bY)$的最大值为 ( )
+   
+   A.1
+   
+   B.2
+   
+   C.
+   $$
+   1+|\rho|
+   $$
+   
+   D.
+   $$
+   1 + \rho^2
+   $$
+
+解：
+$$
+D(aX + bY) = a^2D(X) + b^2D(Y) + 2ab Cov(a,b) = a^2 + b^2 + 2ab\rho\leq 1 + |\rho|
+$$
+选C。
+
+
+
+### 9.设$X_1, X_2, \ldots, X_{20}$是来自总体$B(1, 0.1)$的简单随机样本, 令$T = \sum_{i=1}^{20}X_i$，利用泊松分布近似表示二项分布的方法可得$P(T\leq 1)\approx$ ( )
+   
+   A. $\frac{1}{e^2}$
+   
+   B. $\frac{2}{e^2}$
+   
+   C. $\frac{3}{e^2}$
+   
+   D. $\frac{4}{e^2}$
+
+解：$T\sim B(20, 0.1), \lambda = Np = 2, T$近似服从$Poisson(2)$，所以$P(T\leq 1) = P(T = 0) + P(T = 1) = \frac{3}{e^2}$，选C。
+
+
+
+### 10.设$X_1, X_2, \cdots, X_n$为来自正态总体$N(\mu, 2)$的简单随机样本，记$\bar{X} = \frac{1}{n}\sum_{i=1}^n X_i$，$z_\alpha$表示标准正态分布的上侧$\alpha$分位数，假设检验问题：$H_0: \mu\leq 1$；$H_1: \mu > 1$的显著性水平为$\alpha$的检验的拒绝域为 ( ) 
+    
+
+   A. $\{(X_1, X_2, \cdots, X_n)\mid\bar{X} > 1 + \frac{2}{n}z_\alpha\}$
+      
+   B. $\{(X_1, X_2, \cdots, X_n)\mid\bar{X} > 1 + \frac{\sqrt{2}}{n}z_\alpha\}$
+
+   C. $\{(X_1, X_2, \cdots, X_n)\mid\bar{X} > 1 + \frac{2}{\sqrt{n}}z_\alpha\}$
+
+   D. $\{(X_1, X_2, \cdots, X_n)\mid\bar{X} > 1 + \sqrt{\frac{2}{n}}z_\alpha\}$
+
+解：$\bar{X}\sim N(\mu, \frac{2}{n})$，选D。
+
+
+
+
+## 二、填空题
+
+### 11.$\lim_{x\to 0^+}\frac{x^x - 1}{\ln x\ln(1-x)} = $
+
+解：$x^x - 1 = e^{x\ln x} - 1\sim x\ln x$，因此$\frac{x^x - 1}{\ln x\ln(1-x)}\sim\frac{x}{\ln(1-x)}\to -1$。
+
+
+
+### 12.已知函数
+$$
+f(x) = \begin{cases}0, & 0\leq x < \frac{1}{2}\\x^2, & \frac{1}{2}\leq x\leq 1\end{cases}
+$$
+的傅里叶级数为$\sum_{n=1}^{\infty}b_n\sin n\pi x$，且$S(x)$是$\sum_{n=1}^{\infty}b_n\sin n\pi x$的和函数，则$S(-\frac{7}{2}) = $
+
+解：奇延拓的傅里叶级数，周期为2。于是$S(-\frac{7}{2}) = S(\frac{1}{2}) = \frac{f_-(\frac{1}{2}) + f_+(\frac{1}{2})}{2} = \frac{1}{8}$。
+
+
+
+### 13.已知函数$v(x, y, z) = xy^2z^3$，向量$\vec{n} = (2, 2, -1)$，则$\frac{\partial v}{\partial\vec{n}}\mid_{(1, 1, 1)} =$
+
+解：$\nabla v = (y^2z^3, 2xy^2z^3, 3xy^2z^2), \nabla v(1, 1, 1) = (1, 2, 3)$。于是$\frac{\partial v}{\partial\vec{n}}\mid_{(1, 1, 1)} = \nabla v(1, 1, 1)\cdot\frac{\vec{n}}{\|\vec{n}\|} = 1$。
+
+
+
+### 14.已知有向曲线$L$是沿抛物线$y = 1 - x^2$从点$(1, 0)$到$(-1, 0)$的一段，则曲线积分$\int_L(y + \cos x)\,dx + (2x + \cos y)\,dy =$ 
+
+解：考虑从$(-1, 0)$到$(1, 0)$的线段上的积分，$\int_{L'}(y + \cos x)\,dx + (2x + \cos y)\,dy = \int_{-1}^1\cos x dx = 2\sin 1$。
+于是根据格林公式有 
+
+$$
+\begin{equation*}
+\begin{aligned}
+\int_L(y + \cos x)\,dx + (2x + \cos y)\,dy &= \oint(y + \cos x)\,dx + (2x + \cos y)\,dy - 2\sin 1\\
+&= \iint_D dx dy - 2\sin 1\\
+&= \int_{-1}^1 dx\int_0^{1-x^2} dy - 2\sin 1\\
+&= \frac{4}{3} - 2\sin 1
+\end{aligned}
+\end{equation*}
+$$
+
+
+
+### 15.设矩阵
+$$
+A = \begin{bmatrix}4 & 2 & -3\\a & 3 & -4\\b & 5 & -7\end{bmatrix}
+$$
+若方程组$A^2X = 0$与$AX = 0$不同解，则$a - b =$ 
+
+解：
+$$
+r(A) = 2, r(A^2) = 1
+$$
+
+$$
+A^2 = \begin{bmatrix}16+2a-3b & -1 & 1\\7a-4b & 2a-11 & -3a+16\\5a-3b & 2b-20 & -3b+29\end{bmatrix}
+$$
+
+于是$2a-11 = 3a-16, 2b-20 = 3b-29, a = 5, b = 9, a-b = -4$。
+
+
+
+### 16.设$A, B$为两个不同随机事件且相互独立，已知$P(A) = 2P(B)$；$P(A\cup B) = \frac{5}{8}$，则$A, B$中至少有一个发生的条件下，$A, B$中恰好有一个发生的概率为
+
+解：$P(A\cup B) = P(A) + P(B) - P(A)P(B) = 3P(B) - 2P(B)^2 = \frac{5}{8}$，所以$P(A) = \frac{1}{2}, P(B) = \frac{1}{4}$。于是所求概率为$\frac{P(A\cup B) - P(A)P(B)}{P(A\cup B)} = \frac{4}{5}$
+
+
+
+## 三、解答题
+
+### 17.计算$\int_0^1\frac{1}{(x+1)(x^2-2x+2)}\,dx$
+
+解：设$\frac{1}{(x+1)(x^2-2x+2)} = \frac{A}{x+1} + \frac{Bx + C}{x^2 - 2x + 2}$，解得$A = \frac{1}{5}, B = -\frac{1}{5}, C = \frac{3}{5}$。于是所求积分为
+
+$$
+\begin{equation*}
+\begin{aligned}
+&\int_0^1(\frac{1}{5(x+1)} + \frac{-x + 3}{5[(x-1)^2 + 1]})dx\\
+= &\int_0^1\frac{dx}{5(x+1)} - \int_0^1\frac{d[(x-1)^2 + 1]}{10[(x-1)^2 + 1]} + \int_0^1\frac{dx}{5[(x-1)^2 + 1]}\\
+= &\frac{3\ln 2 + \pi}{10}
+\end{aligned}
+\end{equation*}
+$$
+
+
+
+### 18.已知函数$f(u)$在区间$(0, +\infty)$内具有二阶导数，记$g(x, y) = f(\frac{x}{y})$，若$g(x, y)$满足
+    
+   $$
+   \begin{equation*}
+   x^2\frac{\partial^2 g}{\partial x^2} + xy\frac{\partial^2 g}{\partial x\partial y} + y^2\frac{\partial^2 g}{\partial y^2} = 1
+   \end{equation*}
+   $$
+    
+且$g(x, x) = 1, \frac{\partial g}{\partial x}(x, x) = \frac{2}{x}$，求$f(u)$。
+
+解：
+
+$$
+\begin{equation*}
+\frac{\partial g}{\partial x} = \frac{1}{y}f'(\frac{x}{y}), \frac{\partial g}{\partial y} = -\frac{x}{y^2}f'(\frac{x}{y})
+\end{equation*}
+$$
+
+$$
+\begin{equation*}
+\frac{\partial^2 g}{\partial x^2} = \frac{1}{y^2}f''(\frac{x}{y})
+\end{equation*}
+$$
+
+$$
+\begin{equation*}
+\frac{\partial^2 g}{\partial x\partial y} = -\frac{1}{y^2}f'(\frac{x}{y}) - \frac{x}{y^3}f''(\frac{x}{y})
+\end{equation*}
+$$
+
+$$
+\begin{equation*}
+\frac{\partial^2 g}{\partial y^2} = \frac{2x}{y^3}f'(\frac{x}{y}) + \frac{x^2}{y^4}f''(\frac{x}{y})
+\end{equation*}
+$$
+
+代入化简得到$t^2f''(t) + tf'(t) = 1$，其中$t = \frac{x}{y}$。初始条件为$f(1) = 1, f'(1) = 2$。
+
+$t(tf'(t))' = 1$。于是$tf'(t) = \ln t + 2, f(t) = 1 + 2\ln t + \frac{1}{2}\ln^2 t$。
+
+
+
+### 19.设函数$f(x)$在区间$(a, b)$内可导, 证明: 导函数$f'(x)$在$(a, b)$内严格单调增加的充分必要条件是: 对$(a, b)$内任意的$x_1, x_2, x_3$, 当$x_1 < x_2 < x_3$时,
+
+$$
+\begin{equation*}
+\frac{f(x_2) - f(x_1)}{x_2 - x_1} < \frac{f(x_3) - f(x_2)}{x_3 - x_2}
+\end{equation*}
+$$
+
+解：必要性。如果$f'(x)$在$(a, b)$内严格单调增, 则对任意的$x_1, x_2, x_3$, 当$x_1 < x_2 < x_3$时, 根据拉格朗日中值定理
+
+$$
+\frac{f(x_2) - f(x_1)}{x_2 - x_1} = f'(\xi_1) < f'(\xi_2) = \frac{f(x_3) - f(x_2)}{x_3 - x_2}
+$$
+
+$$
+x_1 < \xi_1 < x_2 < \xi_2 < x_3
+$$
+
+充分性。令$x_3\to x_2$，可以得到，对于$x_1 < x_2$，有
+
+$$
+\frac{f(x_2) - f(x_1)}{x_2 - x_1}\leq f'(x_2)
+$$
+
+同理，令$x_1\to x_2$，可以得到，对于$x_2 < x_3$，有
+
+$$
+f'(x_2)\leq\frac{f(x_3) - f(x_2)}{x_3 - x_2}
+$$
+
+那么对于$\forall x_1 < x_3$，任取$x_2$介于$x_1$和$x_3$之间，那么
+
+$$
+f'(x_1)\leq\frac{f(x_2) - f(x_1)}{x_2 - x_1} < \frac{f(x_3) - f(x_2)}{x_3 - x_2}\leq f'(x_3)
+$$
+
+所以$f'(x)$在$(a, b)$内严格单调增。
+
+
+
+### 20.设$\Sigma$是由直线
+$$
+\begin{cases}
+x = 0\\
+y = 0
+\end{cases}
+$$
+绕直线
+$$
+\begin{cases}
+x = t\\
+y = t\\
+z = t
+\end{cases}
+$$
+（$t$为参数）旋转一周得到的曲面，$\Sigma_1$是$\Sigma$介于平面$x + y + z = 0$与$x + y + z = 1$之间部分的外侧，计算曲面积分
+$$
+\iint\limits_{\Sigma_1}x\,dydz + (y + 1)\,dzdx + (z + 2)\,dxdy
+$$
+
+解：$\Sigma_1$表示一个圆锥面。考虑加上底面之后的第二类曲面积分，利用高斯公式有
+
+$$
+\begin{aligned}
+&\iint x\,dydz + (y + 1)\,dzdx + (z + 2)\,dxdy\\
+= &\iiint 3dxdydz = 3V = \frac{2\sqrt{3}\pi}{9}
+\end{aligned}
+$$
+
+再计算底面的第二类曲面积分。可以通过投影到$xOy$平面上计算，结果为$\frac{8\sqrt{3}\pi}{9}$。所以最终答案为$-\frac{2\sqrt{3}\pi}{3}$。
+
+
+
+### 21.设矩阵
+$$
+A = \begin{bmatrix}0 & -1 & 2\\-1 & 0 & 2\\-1 & -1 & a\end{bmatrix}
+$$，
+已知 1 是 A 的特征多项式的正根。
+
+   (1) 求a的值
+
+   (2) 求所有满足$A\alpha = \alpha + \beta, A^2\alpha = \alpha + 2\beta$的非零列向量$\alpha, \beta$
+
+解：（1）$a = 3$
+
+（2）$A^2\alpha = A\alpha + A\beta = \alpha + \beta + A\beta$，因此$A\beta = \beta$。于是$\beta = k_1(1, 1, 1)^T + k_2(2, 0, 1)^T$。
+
+注意到$A - I$的各行相同，$(A - I)\alpha = \beta$的各个元素相同，因此只能有$\beta = k_1(1, 1, 1)^T。$
+
+再求解$(A - I)\alpha = \beta$，对应齐次方程的通解为$k_2(1, 1, 1)^T + k_3(2, 0, 1)^T$，特解为$(1, 0, 1)^T$。因此$\alpha = k_2(1, 1, 1)^T + k_3(2, 0, 1)^T + (1, 0, 1)^T$。
+
+
+
+### 22.设投保人的损失事件发生时，保险公司的赔付额Y与投保人的损失额X的关系为：
+   
+   $$
+   \begin{equation*}
+   Y = \begin{cases}0, & X\leq 100\\X - 100, & X > 100\end{cases}
+   \end{equation*}
+   $$
+    
+   设损失事件发生时，投保人的损失额X概率密度为:
+   
+   $$
+   \begin{equation*}
+   f(x) = \begin{cases}\frac{2\times 100^2}{(100 + x)^3}, & x > 0\\0, & x\leq 0\end{cases}
+   \end{equation*}
+   $$
+
+   (1) 求$P(Y > 0)$及$\mathbb{E}Y$;
+
+   (2) 这种损失事件在一年内发生的次数记为 $N$, 保险公司在一年内就这种损失事件产生的理赔次数记为 $M$。 假设 $N$ 服从参数为 8 的泊松分布, 在 $N = n (n \geq 1)$ 的条件下, $M$ 服从二项分布 $B(n, p)$, 其中 $p = P(Y > 0)$, 求 $M$ 的概率分布。
+
+解：（1）
+
+$$
+P(Y > 0) = P(X > 100) = \int_{100}^\infty \frac{2\times 100^2}{(100 + x)^3} dx = \frac{1}{4}
+$$
+
+$$
+\mathbb{E}Y = \int_{100}^\infty (x-100)\frac{2\times 100^2}{(100 + x)^3} dx = 50
+$$
+
+（2）
+$$
+M | N = n \sim B(n, \frac{1}{4})
+$$，
+由全概率公式有
+
+$$
+\begin{aligned}
+P(M = m) &= \sum_{n = m}^{\infty} P(N = n)P(M = m | N = n) \\
+&= \sum_{n = m}^{\infty} \frac{8^n}{n!}e^{-8} \frac{n!}{m!(n-m)!}(\frac{1}{4})^m(\frac{3}{4})^{n-m} \\
+&= \sum_{n = m}^{\infty} e^{-8} \frac{2^m6^{n-m}}{m!(n-m)!} \\
+&= e^{-8} \frac{2^m}{m!}\sum_{k = 0}^{\infty} \frac{6^k}{k!} \\
+&= \frac{2^m}{m!}e^{-2}
+\end{aligned}
+$$
+
+因此 $M$ 服从参数为 2 的泊松分布。

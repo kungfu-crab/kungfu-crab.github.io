@@ -12,4 +12,6 @@ Hello! I'm Pengyu Chen, a PhD student in the Department of Automation, Tsinghua 
 
 Contact me: [kungfucrab@outlook.com](mailto:kungfucrab@outlook.com)
 
-[![Hits-of-Code](https://hitsofcode.com/github/kungfu-crab/kungfu-crab.github.io?branch=main)](https://hitsofcode.com/github/kungfu-crab/kungfu-crab.github.io/view?branch=main)
+<span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>

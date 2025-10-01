@@ -12,6 +12,4 @@ Hello! I'm Pengyu Chen, a PhD student in the Department of Automation, Tsinghua 
 
 Contact me: [kungfucrab@outlook.com](mailto:kungfucrab@outlook.com)
 
-<span id="busuanzi_container_site_pv">
-    本站总访问量<span id="busuanzi_value_site_pv"></span>次
-</span>
+本站总访问量<span id="busuanzi_site_pv"></span>次

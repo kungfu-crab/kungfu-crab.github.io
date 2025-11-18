@@ -340,3 +340,5 @@ if __name__ == "__main__":
 
 需要指出两点。首先，我们将 X @ X.T 替换为核函数矩阵 $K(\mathbf{x}_i, \mathbf{x}_j)$，即可轻松扩展到非线性SVM。例如，RBF核：`K = np.exp(-gamma * np.sum((X[:, None] - X[None, :])**2, axis=-1))`。其次，这个只是对 SVM 的一个简单实现，对于大规模数据集，通用的QP求解器（如CVXOPT）会变慢。scikit-learn 中的 SVC 是基于专门为 SVM 设计的序列最小优化（SMO）算法实现的，这里实践的目的是为了更好的理解 SVM 的原理。
 
+<script async src="https://npm.onmicrosoft.cn/penndu@16.0.0/bsz.js"></script>
+本文总阅读量<span id="busuanzi_page_pv"></span>次

@@ -23,8 +23,20 @@ Lithium-ion batteries are widely deployed in electric vehicles and other energy 
 
 Battery cycle life prediction; Data-driven prediction; Early-cycle data; Semi-supervised learning; Self attention
 
-## Citation (IEEE)
+## Citation
 
 Y. Wang, M. A. Khan, P. Chen, and B. Jiang, “Semi-supervised learning for battery cycle life prediction using a smoothed self-attention mechanism,” *Journal of Energy Storage*, vol. 183, Art. no. 125312, Jan. 2027, doi: [10.1016/j.est.2026.125312](https://doi.org/10.1016/j.est.2026.125312).
+
+```bibtex
+@article{wang2027semi,
+  title={Semi-supervised learning for battery cycle life prediction using a smoothed self-attention mechanism},
+  author={Wang, Yixing and Khan, Muhammad Arslan and Chen, Pengyu and Jiang, Benben},
+  journal={Journal of Energy Storage},
+  volume={183},
+  pages={125312},
+  year={2027},
+  publisher={Elsevier}
+}
+```
 
 [ScienceDirect 原文](https://www.sciencedirect.com/science/article/pii/S2352152X26049765) · [DOI: 10.1016/j.est.2026.125312](https://doi.org/10.1016/j.est.2026.125312)

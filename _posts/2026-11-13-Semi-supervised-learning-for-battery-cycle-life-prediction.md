@@ -7,7 +7,13 @@ categories: 科研成果
 
 Yixing Wang, Muhammad Arslan Khan, **Pengyu Chen**, Benben Jiang
 
-Journal: *Journal of Energy Storage*
+## [Journal of Energy Storage](https://www.sciencedirect.com/journal/journal-of-energy-storage)
+
+**Date:** 1 January 2027
+
+**Article:** 125312
+
+**Volume:** [Volume 183, Part C](https://www.sciencedirect.com/journal/journal-of-energy-storage/vol/183/part/PC)
 
 ## Abstract
 
@@ -16,5 +22,9 @@ Lithium-ion batteries are widely deployed in electric vehicles and other energy 
 ## Keywords
 
 Battery cycle life prediction; Data-driven prediction; Early-cycle data; Semi-supervised learning; Self attention
+
+## Citation (IEEE)
+
+Y. Wang, M. A. Khan, P. Chen, and B. Jiang, “Semi-supervised learning for battery cycle life prediction using a smoothed self-attention mechanism,” *Journal of Energy Storage*, vol. 183, Art. no. 125312, Jan. 2027, doi: [10.1016/j.est.2026.125312](https://doi.org/10.1016/j.est.2026.125312).
 
 [ScienceDirect 原文](https://www.sciencedirect.com/science/article/pii/S2352152X26049765) · [DOI: 10.1016/j.est.2026.125312](https://doi.org/10.1016/j.est.2026.125312)
